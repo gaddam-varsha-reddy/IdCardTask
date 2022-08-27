@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    header{
+        height:50px;
+        text-align: center;
+    }
+    body{
+        background-color: aliceblue;
+    }
+    * {
+     box-sizing: border-box;
+    }
+
+    .column {
+    padding: 2px;
+    border-color: black;
+    border:2px solid;
+    margin:10px;
+    background-color:white;
+    }
+    .column:hover{
+        background-color:azure;
+    }
+    .row{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:600px;
+    }
+    img{
+        margin:30px;
+        border-radius: 50%;
+    }
+    p{
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>ID Cards Display</h1>
+</header>
+<div class="row">
+    <div class="column">
+      <img src="id-1.jpg" height="350px">
+      <p id="p1"></p>
+    </div>
+    <div class="column">
+        <img src="id-2.jpg" height="350px">
+        <p id="p2"></p>
+    </div>
+    <div class="column">
+        <img src="id-3.jpg" height="350px">
+        <p id="p3"></p>
+    </div>
+</div>
+<div class="row">
+   
+    <div class="column">
+        <img src="id-6.jpg" height="350px">
+        <p id="p4"></p>
+    </div>
+    <div class="column">
+        <img src="id-4.jpg" height="350px">
+        <p id="p5"></p>
+    </div>
+    <div class="column">
+        <img src="id-5.jpg" height="350px">
+        <p id="p6"></p>
+    </div>
+</div>
+<div id="demo">
+
+</div>
+
+<script>
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    //document.getElementById("demo").innerHTML =this.responseText;
+    let o = JSON.parse(this.responseText);
+    //console.log(o.data);
+    //console.log("Id: "+o.data[0].id);
+    //console.log("Full Name: "+o.data[0].first_name+" "+o.data[0].last_name);
+    //console.log("Email: "+o.data[0].email);
+    let txt="";
+    txt="Id: "+o.data[0].id+"<br>" +o.data[0].first_name+" "+o.data[0].last_name+"<br>"+o.data[0].email;
+    document.getElementById("p1").innerHTML=txt;
+    txt="";
+    txt="Id: "+o.data[1].id+"<br>" +o.data[1].first_name+" "+o.data[1].last_name+"<br>"+o.data[1].email;
+    document.getElementById("p2").innerHTML=txt;
+    txt="";
+    txt="Id: "+o.data[2].id+"<br>" +o.data[2].first_name+" "+o.data[2].last_name+"<br>"+o.data[2].email;
+    document.getElementById("p3").innerHTML=txt;
+    txt="";
+    txt="Id: "+o.data[3].id+"<br>" +o.data[3].first_name+" "+o.data[3].last_name+"<br>"+o.data[3].email;
+    document.getElementById("p4").innerHTML=txt;
+    txt="";
+    txt="Id: "+o.data[4].id+"<br>" +o.data[4].first_name+" "+o.data[4].last_name+"<br>"+o.data[4].email;
+    document.getElementById("p5").innerHTML=txt;
+    txt="";
+    txt="Id: "+o.data[5].id+"<br>" +o.data[5].first_name+" "+o.data[5].last_name+"<br>"+o.data[5].email;
+    document.getElementById("p6").innerHTML=txt;
+    txt="";
+  }
+  xhttp.open("GET", "https://reqres.in/api/users?page=1");
+  xhttp.send();
+
+</script>
+
+</body>
+</html>
